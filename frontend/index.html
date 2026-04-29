@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photo Segregator — AI-powered photo grouping by person using face detection and clustering.">
+  <title>Photo Segregator</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- ═══ Sidebar ═══ -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <h1>📸 Photo Segregator</h1>
+        <p>AI Face Clustering</p>
+      </div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <button class="nav-item active" data-page="dashboard">
+          <span class="nav-icon">📊</span> Dashboard
+        </button>
+        <button class="nav-item" data-page="upload">
+          <span class="nav-icon">📤</span> Upload & Run
+        </button>
+        <button class="nav-item" data-page="gallery">
+          <span class="nav-icon">👥</span> People
+          <span class="nav-badge" id="navClusterCount">0</span>
+        </button>
+        <button class="nav-item" data-page="review">
+          <span class="nav-icon">🔍</span> Review
+          <span class="nav-badge" id="navReviewCount">0</span>
+        </button>
+        <button class="nav-item" data-page="heatmap">
+          <span class="nav-icon">🗺️</span> Heatmap
+        </button>
+        <button class="nav-item" data-page="config">
+          <span class="nav-icon">⚙️</span> Config
+        </button>
+        <button class="nav-item" data-page="logs">
+          <span class="nav-icon">📋</span> Logs
+        </button>
+      </nav>
+      <div class="sidebar-footer">v1.0 • Offline-first AI</div>
+    </aside>
+
+    <!-- ═══ Main Content ═══ -->
+    <main class="main-content">
+      <!-- ── Dashboard ── -->
+      <section class="page active" id="page-dashboard">
+        <div class="page-header">
+          <h2>Dashboard</h2>
+          <p>Overview of your photo segregation pipeline</p>
+        </div>
+        <div class="stats-grid" id="dashboardStats">
+          <div class="stat-card">
+            <div class="stat-icon">🖼️</div>
+            <div class="stat-value" id="statInputPhotos">—</div>
+            <div class="stat-label">Input Photos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">😊</div>
+            <div class="stat-value" id="statFaces">—</div>
+            <div class="stat-label">Faces Detected</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-value" id="statClusters">—</div>
+            <div class="stat-label">People Found</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔍</div>
+            <div class="stat-value" id="statReview">—</div>
+            <div class="stat-label">Needs Review</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">⚡ Quick Actions</div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="App.navigate('upload')">📤 Upload Photos</button>
+            <button class="btn btn-secondary" onclick="App.navigate('gallery')">👥 View People</button>
+            <button class="btn btn-secondary" onclick="App.navigate('review')">🔍 Review Faces</button>
+            <button class="btn btn-secondary" onclick="App.navigate('heatmap')">🗺️ View Heatmap</button>
+          </div>
+        </div>
+        <div class="card" id="dashboardPipelineStatus" style="display:none">
+          <div class="card-title">🔄 Pipeline Status</div>
+          <div id="dashboardProgressArea"></div>
+        </div>
+      </section>
+
+      <!-- ── Upload & Run ── -->
+      <section class="page" id="page-upload">
+        <div class="page-header">
+          <h2>Upload & Run</h2>
+          <p>Add photos and run the face clustering pipeline</p>
+        </div>
+        <div class="card">
+          <div class="card-title">📁 Upload Photos</div>
+          <div class="upload-zone" id="uploadZone">
+            <div class="upload-icon">📸</div>
+            <h3>Drag & drop photos here</h3>
+            <p>or click to browse • JPG, PNG, WebP supported</p>
+            <input type="file" id="fileInput" multiple accept="image/*">
+          </div>
+          <div class="file-list" id="fileList"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">🚀 Run Pipeline</div>
+          <div style="margin-bottom:16px">
+            <label class="toggle-switch" style="display:inline-flex;align-items:center;gap:10px">
+              <input type="checkbox" id="incrementalToggle">
+              <span class="slider"></span>
+            </label>
+            <span style="font-size:0.85rem;margin-left:8px;color:var(--text-secondary)">Incremental mode (skip already-processed images)</span>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" id="runPipelineBtn" onclick="App.runPipeline()">
+              🚀 Run Pipeline
+            </button>
+          </div>
+        </div>
+        <div class="card" id="pipelineProgressCard" style="display:none">
+          <div class="card-title">📊 Pipeline Progress</div>
+          <div class="progress-container">
+            <div class="progress-bar-track">
+              <div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div>
+            </div>
+            <div class="progress-info">
+              <span class="step-name" id="progressStepName">Waiting...</span>
+              <span class="step-pct" id="progressPct">0%</span>
+            </div>
+          </div>
+          <div class="progress-steps" id="progressSteps"></div>
+          <p style="margin-top:14px;font-size:0.82rem;color:var(--text-muted)" id="progressMessage"></p>
+        </div>
+      </section>
+
+      <!-- ── People Gallery ── -->
+      <section class="page" id="page-gallery">
+        <div class="page-header">
+          <h2>People Gallery</h2>
+          <p>Browse detected person clusters</p>
+        </div>
+        <div id="galleryContent">
+          <div class="empty-state">
+            <div class="empty-icon">👥</div>
+            <h3>No clusters yet</h3>
+            <p>Run the pipeline first to detect and group faces.</p>
+            <button class="btn btn-primary" onclick="App.navigate('upload')">📤 Upload & Run</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Face Review ── -->
+      <section class="page" id="page-review">
+        <div class="page-header">
+          <h2>Face Review</h2>
+          <p>Review uncertain face-cluster assignments</p>
+        </div>
+        <div id="reviewContent">
+          <div class="empty-state">
+            <div class="empty-icon">✅</div>
+            <h3>No faces to review</h3>
+            <p>All face assignments look good, or the pipeline hasn't been run yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Heatmap ── -->
+      <section class="page" id="page-heatmap">
+        <div class="page-header">
+          <h2>Confidence Heatmap</h2>
+          <p>UMAP 2D scatter plot visualization of face clusters</p>
+        </div>
+        <div id="heatmapContent">
+          <div class="empty-state">
+            <div class="empty-icon">🗺️</div>
+            <h3>No heatmap available</h3>
+            <p>Run the pipeline to generate the confidence heatmap.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Config ── -->
+      <section class="page" id="page-config">
+        <div class="page-header">
+          <h2>Configuration</h2>
+          <p>Tune pipeline parameters</p>
+        </div>
+        <div id="configContent"></div>
+        <div style="margin-top:20px">
+          <button class="btn btn-primary" onclick="App.saveConfig()">💾 Save Configuration</button>
+        </div>
+      </section>
+
+      <!-- ── Logs ── -->
+      <section class="page" id="page-logs">
+        <div class="page-header">
+          <h2>Pipeline Logs</h2>
+          <p>Recent processing logs</p>
+        </div>
+        <div class="btn-group" style="margin-bottom:16px">
+          <button class="btn btn-secondary btn-sm" onclick="App.loadLogs()">🔄 Refresh</button>
+        </div>
+        <div class="log-viewer" id="logViewer">
+          <div class="empty-state">
+            <div class="empty-icon">📋</div>
+            <h3>No logs yet</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="App.closeLightbox()">✕</button>
+    <img id="lightboxImg" src="" alt="Full size photo">
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "enabled": true,
+  "statistics": {
+    "mean": 0.9091407656669617,
+    "std": 0.2060653269290924,
+    "median": 0.9615676403045654,
+    "min": 0.052602529525756836,
+    "max": 1.1199748516082764,
+    "p5": 0.2486990988254547,
+    "p25": 0.8773916959762573,
+    "p50": 0.9615676403045654,
+    "p75": 1.0232298374176025,
+    "p95": 1.0837528705596924,
+    "num_pairs": 406
+  },
+  "thresholds": {
+    "merge_threshold": 0.5,
+    "split_threshold": 1.0232298374176025,
+    "review_threshold": 0.7,
+    "reassign_threshold": 1.0
+  },
+  "config": {
+    "merge_sigma": 1.5,
+    "split_percentile": 75,
+    "review_bottom_pct": 15
+  }
+}

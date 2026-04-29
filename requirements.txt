@@ -1,0 +1,29 @@
+# Photo Segregator - Dependencies
+# Core
+insightface>=0.7.3
+onnxruntime>=1.16.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+Pillow>=10.0.0
+
+# ML / Clustering (HDBSCAN is included in scikit-learn >= 1.3)
+scikit-learn>=1.3.0
+scikit-image>=0.20.0
+umap-learn>=0.5.4
+easydict
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.13.0
+
+# Utilities
+PyYAML>=6.0
+tqdm>=4.65.0
+
+# Web Frontend
+flask>=3.0.0
+
+# Note: On Python 3.14 / Windows without Visual C++ Build Tools:
+# - insightface must be installed with patched setup.py (see README)
+# - The standalone 'hdbscan' package is NOT needed; sklearn.cluster.HDBSCAN is used
+# - albumentations is optional (mask_renderer feature only)

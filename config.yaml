@@ -1,0 +1,103 @@
+# ============================================================
+# Photo Segregator — Configuration
+# ============================================================
+# All tunable parameters in one place.
+# Override any value via CLI flags or environment variables.
+
+# --- Input / Output ---
+input_dir: "./photos"
+output_dir: "./output"
+copy_mode: "copy"            # "copy" (safe default) or "symlink" (requires privileges on Windows)
+save_crops: true             # Save aligned face crops alongside originals
+recursive: true              # Scan input folder recursively
+
+# --- Face Detection (RetinaFace via InsightFace) ---
+detection:
+  model_pack: "buffalo_l"    # InsightFace model pack (buffalo_l = best accuracy)
+  det_size: [640, 640]       # Detection input resolution
+  det_thresh: 0.5            # Minimum detection confidence (0-1)
+  max_faces: 50              # Max faces per image (safety limit)
+
+# --- Quality Filtering ---
+quality:
+  min_face_size: 40          # Minimum face bounding box side in pixels
+  blur_threshold: 50.0       # Laplacian variance below this = blurry
+  max_pose_angle: 75.0       # Degrees; reject extreme side faces
+  min_landmark_conf: 0.3     # Minimum average landmark confidence
+
+# --- Embedding Extraction ---
+embedding:
+  dimension: 512             # ArcFace embedding dimensionality
+  normalize: true            # L2-normalize embeddings
+
+# --- Ensemble Embeddings ---
+ensemble:
+  enabled: true              # Enable multi-crop ensemble averaging
+  use_flip: true             # Include horizontally flipped crop
+  num_perturbations: 2       # Number of random perturbation crops
+  rotation_range: 5.0        # Max rotation in degrees for perturbations
+  scale_jitter: 0.05         # Max scale jitter fraction
+
+# --- UMAP Dimensionality Reduction ---
+umap:
+  enabled: true
+  n_components: 50           # Target dimensionality (512 -> 50)
+  n_neighbors: 15            # Local neighborhood size
+  min_dist: 0.0              # Tight clusters for downstream HDBSCAN
+  metric: "cosine"
+
+# --- Clustering ---
+clustering:
+  primary_method: "hdbscan"
+  fallback_method: "dbscan"
+  noise_fallback_ratio: 0.6  # If HDBSCAN noise ratio > this, fall back to DBSCAN
+
+  hdbscan:
+    min_cluster_size: 2      # Small value for datasets < 100 images
+    min_samples: 1           # Conservative: fewer noise points
+    metric: "euclidean"      # Euclidean on UMAP-reduced space (cosine on raw)
+    cluster_selection_method: "eom"  # Excess of Mass
+    prediction_data: true
+
+  dbscan:
+    eps: 0.5                 # Max distance between two samples
+    min_samples: 2
+    metric: "euclidean"
+
+# --- Adaptive Thresholding ---
+adaptive_threshold:
+  enabled: true              # Use adaptive thresholds instead of fixed
+  merge_sigma: 1.5           # merge_threshold = mean - merge_sigma * std
+  split_percentile: 75       # split_threshold = this percentile of distances
+  review_bottom_pct: 15      # Review bottom N% confidence scores
+  # Manual overrides (set to null to use adaptive):
+  fixed_merge_threshold: null
+  fixed_split_threshold: null
+  fixed_review_threshold: null
+
+# --- Cluster Refinement ---
+refinement:
+  merge_threshold: 0.3       # Default cosine distance; overridden by adaptive
+  split_threshold: 0.8       # Default; overridden by adaptive
+  reassign_threshold: 0.6    # Max distance to reassign noise to nearest cluster
+  review_threshold: 0.4      # Confidence below this → review queue
+
+# --- Semi-Supervised Learning ---
+semi_supervised:
+  enabled: true
+  known_identities_path: "_metadata/known_identities.npz"
+  classification_threshold: 0.4  # Max cosine distance to classify as known identity
+
+# --- Confidence Heatmap ---
+heatmap:
+  enabled: true
+  output_path: "_metadata/cluster_heatmap.png"
+  figsize: [14, 10]
+  dpi: 150
+
+# --- Logging ---
+logging:
+  level: "INFO"              # DEBUG, INFO, WARNING, ERROR
+  log_dir: "_logs"
+  log_file: "pipeline.log"
+  console: true

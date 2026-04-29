@@ -1,0 +1,212 @@
+{
+  "n_clusters": 9,
+  "n_faces": 29,
+  "n_review": 25,
+  "n_noise": 0,
+  "clusters": {
+    "Person_000": {
+      "face_count": 6,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM.jpeg",
+          "destination": "output\\Person_000\\WhatsApp Image 2026-04-22 at 9.15.41 PM.jpeg",
+          "face_id": "670872ce67fc4358_001",
+          "confidence": 0.3166666477918625
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM1.jpeg",
+          "destination": "output\\Person_000\\WhatsApp Image 2026-04-22 at 9.15.41 PM1.jpeg",
+          "face_id": "3b0f733c550d599b_001",
+          "confidence": 0.49090919494628904
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM2.jpeg",
+          "destination": "output\\Person_000\\WhatsApp Image 2026-04-22 at 9.15.41 PM2.jpeg",
+          "face_id": "8fe8acdcb56cb8be_000",
+          "confidence": 0.6771339774131775
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM3.jpeg",
+          "destination": "output\\Person_000\\WhatsApp Image 2026-04-22 at 9.15.41 PM3.jpeg",
+          "face_id": "41649126d158c1f2_001",
+          "confidence": 0.6326475173234939
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.03 PM4.jpeg",
+          "destination": "output\\Person_000\\WhatsApp Image 2026-04-22 at 9.17.03 PM4.jpeg",
+          "face_id": "db6b04454c537252_000",
+          "confidence": 0.4636627733707428
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.03 PM5.jpeg",
+          "destination": "output\\Person_000\\WhatsApp Image 2026-04-22 at 9.17.03 PM5.jpeg",
+          "face_id": "221f291ea4d75a2a_000",
+          "confidence": 0.6116612643003464
+        }
+      ],
+      "avg_confidence": 0.5321135625243186
+    },
+    "Person_001": {
+      "face_count": 5,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\IMG_2513.JPG",
+          "destination": "output\\Person_001\\IMG_2513.JPG",
+          "face_id": "53af96d6abf1b538_003",
+          "confidence": 0.8868787854909896
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\IMG_2596.JPG",
+          "destination": "output\\Person_001\\IMG_2596.JPG",
+          "face_id": "e8f034babfb59692_000",
+          "confidence": 0.8928035110235214
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\IMG_2633.JPG",
+          "destination": "output\\Person_001\\IMG_2633.JPG",
+          "face_id": "d0f4645cdd205bf5_000",
+          "confidence": 0.0
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\IMG_3189.JPG",
+          "destination": "output\\Person_001\\IMG_3189.JPG",
+          "face_id": "d658b78637f3724a_000",
+          "confidence": 0.866432163119316
+        }
+      ],
+      "avg_confidence": 0.7071727299690246
+    },
+    "Person_002": {
+      "face_count": 2,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\IMG_3189.JPG",
+          "destination": "output\\Person_002\\IMG_3189.JPG",
+          "face_id": "d658b78637f3724a_001",
+          "confidence": 0.3166668176651001
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "destination": "output\\Person_002\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "face_id": "b0febc16d7c4001f_002",
+          "confidence": 0.0
+        }
+      ],
+      "avg_confidence": 0.15833340883255004
+    },
+    "Person_003": {
+      "face_count": 2,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM2.jpeg",
+          "destination": "output\\Person_003\\WhatsApp Image 2026-04-22 at 9.15.41 PM2.jpeg",
+          "face_id": "8fe8acdcb56cb8be_002",
+          "confidence": 0.3166666477918625
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "destination": "output\\Person_003\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "face_id": "b0febc16d7c4001f_001",
+          "confidence": 0.3166666477918625
+        }
+      ],
+      "avg_confidence": 0.3166666477918625
+    },
+    "Person_004": {
+      "face_count": 2,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM2.jpeg",
+          "destination": "output\\Person_004\\WhatsApp Image 2026-04-22 at 9.15.41 PM2.jpeg",
+          "face_id": "8fe8acdcb56cb8be_001",
+          "confidence": 0.3166666477918625
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM3.jpeg",
+          "destination": "output\\Person_004\\WhatsApp Image 2026-04-22 at 9.15.41 PM3.jpeg",
+          "face_id": "41649126d158c1f2_000",
+          "confidence": 0.3166666477918625
+        }
+      ],
+      "avg_confidence": 0.3166666477918625
+    },
+    "Person_005": {
+      "face_count": 2,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.03 PM5.jpeg",
+          "destination": "output\\Person_005\\WhatsApp Image 2026-04-22 at 9.17.03 PM5.jpeg",
+          "face_id": "221f291ea4d75a2a_001",
+          "confidence": 0.31667049825191496
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "destination": "output\\Person_005\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "face_id": "b0febc16d7c4001f_000",
+          "confidence": 0.3166666477918625
+        }
+      ],
+      "avg_confidence": 0.3166685730218887
+    },
+    "Person_006": {
+      "face_count": 2,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.03 PM5.jpeg",
+          "destination": "output\\Person_006\\WhatsApp Image 2026-04-22 at 9.17.03 PM5.jpeg",
+          "face_id": "221f291ea4d75a2a_002",
+          "confidence": 0.3333333134651184
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "destination": "output\\Person_006\\WhatsApp Image 2026-04-22 at 9.17.04 PM6.jpeg",
+          "face_id": "b0febc16d7c4001f_003",
+          "confidence": 0.3333333134651184
+        }
+      ],
+      "avg_confidence": 0.3333333134651184
+    },
+    "Person_007": {
+      "face_count": 5,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\IMG_2513.JPG",
+          "destination": "output\\Person_007\\IMG_2513.JPG",
+          "face_id": "53af96d6abf1b538_000",
+          "confidence": 0.3999354839324951
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\IMG_2633.JPG",
+          "destination": "output\\Person_007\\IMG_2633.JPG",
+          "face_id": "d0f4645cdd205bf5_001",
+          "confidence": 0.4220998287200928
+        }
+      ],
+      "avg_confidence": 0.358880895471165
+    },
+    "Person_008": {
+      "face_count": 3,
+      "images": [
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM.jpeg",
+          "destination": "output\\Person_008\\WhatsApp Image 2026-04-22 at 9.15.41 PM.jpeg",
+          "face_id": "670872ce67fc4358_000",
+          "confidence": 0.3336670994758606
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.15.41 PM1.jpeg",
+          "destination": "output\\Person_008\\WhatsApp Image 2026-04-22 at 9.15.41 PM1.jpeg",
+          "face_id": "3b0f733c550d599b_000",
+          "confidence": 0.33326365674680763
+        },
+        {
+          "source": "C:\\Users\\harsh\\Desktop\\minorFinal (2)\\minorFinal\\photos\\WhatsApp Image 2026-04-22 at 9.17.03 PM4.jpeg",
+          "destination": "output\\Person_008\\WhatsApp Image 2026-04-22 at 9.17.03 PM4.jpeg",
+          "face_id": "db6b04454c537252_001",
+          "confidence": 0.4250728487968445
+        }
+      ],
+      "avg_confidence": 0.3640012016731709
+    }
+  }
+}
